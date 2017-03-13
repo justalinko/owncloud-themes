@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "INSTALLING OWNCLOUD THEMES SMKW9 ..."
+sleep 1
+file smkw9.tar.gz > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
+	echo "[+] Extracting smkw9.tar.gz ..."
+	echo "Please wait ..."
+	tar -xvf smkw9.tar.gz > /dev/null 2>&1
+else
+	echo "[+] smkw9.tar.gz Not Exists ..."
+	exit 0
+fi
+sleep 1
+o_path=$(dialog --backtitle "Select Owncloud Path - alinko" --title "Select Owncloud Path :" --dselect / 10 40 3>&1 1>&2 2>&3 3>&1 )
+sleep 1
+clear
+echo "[+] Moving smkw9 to "$o_path" ..."
+mv smkw9 $o_path/themes/smkw9own
+sleep 1
+echo "[+] Configuring "$o_path"/config/config.php ... "
+sed -i "s/);/'theme'=>'smkw9own', );/g" $o_path/config/config.php
+sleep 1
+echo "Installation Finished..."
+echo -n "What You Want Configure Manual "$o_path"/config/config.php ? [y/N] "
+read manc
+if [[ $manc == "N" || $manc == "n" || $manc == "" ]]; then
+	echo "Thanks For Using !"
+	exit 0
+else
+	nano $o_path/config/config.php
+	echo "Thanks For Using !"
+	exit 0
+fi
