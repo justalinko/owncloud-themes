@@ -7,3 +7,6 @@ root@themes:~# cd owncloud-themes
 root@themes:~/owncloud-themes # chmod 755 *
 root@themes:~/owncloud-themes # ./install
 </pre>
+<center>
+<img src="screenshot/ss1.png" style="width:700px;height:400px;">
+<img src="screenshot/ss2.png" style="width:700px;height:400px;">
