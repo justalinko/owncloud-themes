@@ -1,17 +1,12 @@
 #!/bin/bash
 
+# Coded By : Alinko Kun <3
+# IndonesianPeople
+
+
+InstallOwnX(){
 echo "INSTALLING OWNCLOUD THEMES SMKW9 ..."
-sleep 1
-file smkw9.tar.gz > /dev/null 2>&1
-if [[ $? -eq 0 ]]; then
-	echo "[+] Extracting smkw9.tar.gz ..."
-	echo "Please wait ..."
-	tar -xvf smkw9.tar.gz > /dev/null 2>&1
-else
-	echo "[+] smkw9.tar.gz Not Exists ..."
-	exit 0
-fi
-sleep 1
+sleep 2
 o_path=$(dialog --backtitle "Select Owncloud Path - alinko" --title "Select Owncloud Path :" --dselect / 10 40 3>&1 1>&2 2>&3 3>&1 )
 sleep 1
 clear
@@ -31,4 +26,10 @@ else
 	nano $o_path/config/config.php
 	echo "Thanks For Using !"
 	exit 0
+fi
+}
+if [[ `whoami` == "root" ]]; then
+	InstallOwnX
+else
+	echo "[!] You Must Be root Dude."
 fi
